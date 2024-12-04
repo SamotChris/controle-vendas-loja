@@ -20,7 +20,7 @@ public class Conexao {
 
     public static Connection conectar() throws SQLException {
         try {
-            // Registrar explicitamente o driver do MySQL
+           
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             throw new SQLException("Driver do MySQL não encontrado!", e);
