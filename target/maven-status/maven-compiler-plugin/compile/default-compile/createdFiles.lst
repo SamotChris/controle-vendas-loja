@@ -1,0 +1,6 @@
+GetPrecoServlet.class
+ClienteServlet.class
+conexao\Conexao.class
+conexao\Cliente.class
+conexao\TesteConexao.class
+conexao\ClienteDAO.class

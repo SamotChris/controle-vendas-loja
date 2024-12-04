@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Venda</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        // Função para calcular e exibir o total com base na quantidade e preço
+ document.addEventListener("DOMContentLoaded", () => {
+            const produtoInput = document.getElementById("produto");
+            const quantidadeInput = document.getElementById("quantidade");
+            const totalSpan = document.getElementById("total");
+
+            // Atualizar o preço total
+            function atualizarTotal() {
+                const nomeProduto = produtoInput.value.trim();
+                const quantidade = parseInt(quantidadeInput.value, 10);
+
+                if (nomeProduto && quantidade > 0) {
+                    fetch(`/controle-vendas-loja-web-1.0-SNAPSHOT/api/getPreco?produto=${encodeURIComponent(nomeProduto)}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.preco !== null) {
+                                const total = data.preco * quantidade;
+                                totalSpan.textContent = `R$ ${total.toFixed(2)}`;
+                            } else {
+                                totalSpan.textContent = "Erro ao calcular. Produto não encontrado.";
+                            }
+                        })
+                        .catch(() => {
+                            totalSpan.textContent = "Erro ao calcular. Tente novamente.";
+                        });
+                } else {
+                    totalSpan.textContent = "Preencha os campos corretamente.";
+                }
+            }
+
+            // Eventos para atualizar o total
+            produtoInput.addEventListener("change", atualizarTotal);
+            quantidadeInput.addEventListener("input", atualizarTotal);
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Gestão de Vendas</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="vendas.html">Gestão de Vendas</a></li>
+                <li><a href="estoque.jsp">Gestão de Estoque</a></li>
+                <li><a href="clientes.html">Gestão de Clientes</a></li>
+                <li><a href="ListarClientes.html">Lista de Clientes</a></li>
+                <li><a href="listarVendas.jsp">Lista de Vendas</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Registrar Venda</h2>
+            <form action="registrarVenda.jsp" method="post">
+                <label for="nomeCliente">Nome do Cliente:</label>
+                <input type="text" id="nomeCliente" name="nomeCliente" required>
+                <br>
+                <label for="nomeProduto">Nome do Produto:</label>
+                <input type="text" id="nomeProduto" name="nomeProduto" required oninput="calcularTotal()">
+                <br>
+                <label for="quantidade">Quantidade:</label>
+                <input type="number" id="quantidade" name="quantidade" required min="1" oninput="calcularTotal()">
+                <br>
+                <label for="total">Total:</label>
+                <input type="text" id="total" name="total" readonly>
+                <br>
+                <button type="submit">Registrar Venda</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Controle de Vendas</p>
+    </footer>
+</body>
+</html>

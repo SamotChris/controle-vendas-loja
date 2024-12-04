@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Vendas</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Lista de Vendas</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="vendas.html">Gestão de Vendas</a></li>
+                <li><a href="estoque.jsp">Gestão de Estoque</a></li>
+                <li><a href="clientes.html">Gestão de Clientes</a></li>
+                <li><a href="listarClientes.jsp">Lista de Clientes</a></li>
+                <li><a href="listarVendas.jsp">Lista de Vendas</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Vendas Registradas</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Produto</th>
+                        <th>Quantidade</th>
+                        <th>Total</th>
+                        <th>Data</th>
+                    </tr>
+                </thead>
+                <tbody id="dadosVendas">
+                    <!-- Os dados das vendas serão inseridos aqui -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Controle de Vendas</p>
+    </footer>
+    <script src="js/listarVendas.js"></script>
+</body>
+</html>

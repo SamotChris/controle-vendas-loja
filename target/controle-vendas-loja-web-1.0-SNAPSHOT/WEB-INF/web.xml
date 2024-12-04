@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+   version="6.0">
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+</welcome-file-list>
+
+<servlet>
+    <servlet-name>ClienteServlet</servlet-name>
+    <servlet-class>com.mycompany.servlet.ClienteServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>ClienteServlet</servlet-name>
+    <url-pattern>/ClienteServlet</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>ListarVendasServlet</servlet-name>
+    <servlet-class>conexao.ListarVendasServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>ListarVendasServlet</servlet-name>
+    <url-pattern>/ListarVendasServlet</url-pattern>
+</servlet-mapping>
+   <servlet>
+        <servlet-name>RegistrarVendaServlet</servlet-name>
+        <servlet-class>conexao.RegistrarVendaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistrarVendaServlet</servlet-name>
+        <url-pattern>/RegistrarVendaServlet</url-pattern>
+    </servlet-mapping>
+
+
+
+</web-app>
